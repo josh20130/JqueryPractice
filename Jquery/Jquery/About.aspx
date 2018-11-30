@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="About" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="About.aspx.cs" Inherits="Jquery.About" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
-     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="/resources/demos/style.css">
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -24,6 +24,44 @@
 
         .Highlight {
             background-color: yellow;
+        }
+
+        td {
+            text-align: left;
+            vertical-align: top;
+        }
+
+        input[type=text] {
+            background-color: #efefef;
+        }
+
+        .LightHighlight {
+            background-color: #ccc;
+        }
+
+        .PhoneHighlight {
+            background-color: #ccc;
+        }
+
+        .PhoneNumber {
+            margin-top: 5px;
+            width: 80px;
+        }
+
+        .PhoneType {
+            margin-top: 5px;
+        }
+
+        .PhoneNumberDiv {
+            text-align: left;
+            vertical-align: middle;
+            width: 200px;
+        }
+
+        .PhoneTypeDiv {
+            text-align: left;
+            vertical-align: middle;
+            width: 100px;
         }
     </style>
     <script>
@@ -88,124 +126,65 @@
 
 
     </script>
-    <%--<div id="TableContainerDiv" title="Contains Table">
-        <table id="DataTable">
-            <tr>
-                <td>Cell 1 Row 1
-                </td>
-            </tr>
-            <tr>
-                <td>Cell 1 row 2
-                </td>
-            </tr>
-            <tr />
-            <tr>
-                <td>Cell 1 Row 3
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <table style="width: 100%">
-                        <tr>
-                            <td>Nested Table Cell and row
-                            </td>
-                        </tr>
-                    </table>
-                </td>
-            </tr>
 
-        </table>
-    </div>
-    <span class="Foo">Span1</span>
-    <span class="Foo">Span2</span>
-    <span id="Span3" class="Foo">Span 3</span>--%>
-    <%-- ----------------------------------------------------------------------------------------
-    <%--   <div id="Div2" class="BlueDiv">
-        Test div test
-    </div>
-    <div id="OutputDiv"></div>
-    <div class="BlueDiv">
-        <span class="BlueDiv">This is my blue span</span>
-    </div>
-    <div class="RedDiv">
-        <span>Red div</span>
-    </div>--%>
-
-    <%--<div title="contains table">--%>
-   <%-- <table style="width: 300px;">
+    <div id="MyDiv">Some text</div>
+    <table id="MyTable" style="width: 300px;" cellpadding="5">
         <tr>
             <td style="width: 30%;">First Name</td>
             <td style="width: 70%;">
-                <input id="FirstNameTextBox" type="text" onfocus="FocusBlur(this)" onblur="FocusBlur(this)" /></td>
+                <input id="FirstNameTextBox" type="text" /></td>
         </tr>
         <tr>
             <td>Last Name</td>
             <td>
-                <input id="LastNameTextBox" class="MyInput" type="text" onfocus="FocusBlur(this)" onblur="FocusBlur(this)" /></td>
+                <input class="MyInput" id="LastNameTextBox" type="text" /></td>
         </tr>
         <tr>
-            <td class="auto-style1">Comments</td>
-            <td class="auto-style1">
-                <textarea rows="5" class="MyInput" cols="60" id="CommentsTextBox">TextArea</textarea></td>
-        </tr>
-        <tr>
-            <td>
-                <select id="StateSelect" class="MyInput">
-                    <option value="AZ">AZ</option>
-                    <option value="CA" selected>CA</option>
-                </select>
-            </td>
-            <td>&nbsp;</td>
-        </tr>
-        <tr>
-            <td>
-                <input id="SubmitButton" type="button" value="Submit" />
-
+            <td>Comments              
             </td>
             <td>
-                <div id="DivOutput"></div>
-            </td>
+                <textarea></textarea></td>
         </tr>
-    </table>--%>
-    <div id="MyDiv">Some text</div>
+    </table>
     <script type="text/javascript">
         $(document).ready(function () {
             var tbody = $('#customers tbody');
-                $('#addRow').on('click', function () {
-                    tbody.append('<tr><td>Hello</td><td>sup</td></tr>');
-                });
-               tbody.on('click', 'td', function () {
-                    alert($(this).text());
-                });
-
-
+            $('#addRow').on('click', function () {
+                tbody.append('<tr><td>Hello</td><td>sup</td></tr>');
             });
-        
+            tbody.on('click', 'td', function () {
+                alert($(this).text());
+            });
+            //Using hover
+            //$('#MyTable tr').hover(function () {
+            //    //Move enter
+            //    $(this).css('background-color', '#efefef');
+
+            //},
+            //    function () {
+            //        //Mouse leave
+            //        $(this).css('background-color', '#fff');
+            //    });
+            //$('#MyTable tr').hover(function () {
+            //    $(this).toggleClass('LightHighlight');
+            //});
+            $('#MyTable tr').hover(
+                function () {
+                //Move enter
+                $(this).css('background-color', '#efefef');
+
+            },
+                function () {
+                    //Mouse leave
+                    $(this).css('background-color', '#fff');
+                });
+        });
+
 
 
     </script>
-    
-    <div id="selectedPerson"></div>
-    <button id="addRow">Add Row</button>
-    <table id="customers">
-        <tr>
-            <td>John</td>
-            <td>Doe</td>
-        </tr>
-        <tr>
-            <td>Josh</td>
-            <td>Smith</td>
-        </tr>
-        <tr>
-            <td>Josh</td>
-            <td>Smith2</td>
-        </tr>
-        <tr>
-            <td>Josh</td>
-            <td>Smith3</td>
-        </tr>
-    </table>
-       <%--     //function WireEvents() {
+
+    <%--     //function WireEvents() {
             //    $('#SubmitButton').click(function () {
             //        var firstName = $('#FirstNameTextBox').val();
             //        var lastName = $('#LastNameTextBox').val();
@@ -221,7 +200,5 @@
                     
             //    });
                 //$('MyDiv').off();
-           --%>
-
-
+    --%>
 </asp:Content>
