@@ -127,7 +127,7 @@
 
     </script>
 
-    <div id="MyDiv">Some text</div>
+  <%--  <div id="MyDiv">Some text</div>
     <table id="MyTable" style="width: 300px;" cellpadding="5">
         <tr>
             <td style="width: 30%;">First Name</td>
@@ -145,16 +145,51 @@
             <td>
                 <textarea></textarea></td>
         </tr>
-    </table>
+    </table>--%><asp:UpdatePanel runat="server"><ContentTemplate>
+    <button id="MyButton">click to get html</button>
+    <div id="OutputDiv"></div>
     <script type="text/javascript">
         $(document).ready(function () {
-            var tbody = $('#customers tbody');
-            $('#addRow').on('click', function () {
-                tbody.append('<tr><td>Hello</td><td>sup</td></tr>');
+            $('#MyButton').click(function (e) {
+                e.preventDefault();
             });
-            tbody.on('click', 'td', function () {
-                alert($(this).text());
+            $('#MyButton').click(function () {
+                //Load html from helpdetails.html
+                $('#OutputDiv').load('HelpDetails.html #SubToc');              
             });
+        });
+
+
+
+          </script>
+        </ContentTemplate>
+        </asp:UpdatePanel>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<%--
+
+            //Sample code*****************************************
+            //var tbody = $('#customers tbody');
+            //$('#addRow').on('click', function () {
+            //    tbody.append('<tr><td>Hello</td><td>sup</td></tr>');
+            //});
+            //tbody.on('click', 'td', function () {
+            //    alert($(this).text());
+            //});
             //Using hover
             //$('#MyTable tr').hover(function () {
             //    //Move enter
@@ -168,21 +203,21 @@
             //$('#MyTable tr').hover(function () {
             //    $(this).toggleClass('LightHighlight');
             //});
-            $('#MyTable tr').hover(
-                function () {
-                //Move enter
-                $(this).css('background-color', '#efefef');
+        //    $('#MyTable tr').hover(
+        //        function () {
+        //        //Move enter
+        //        $(this).css('background-color', '#efefef');
 
-            },
-                function () {
-                    //Mouse leave
-                    $(this).css('background-color', '#fff');
-                });
-        });
+        //    },
+        //        function () {
+        //            //Mouse leave
+        //            $(this).css('background-color', '#fff');
+        //        });
+        //});--%>
 
 
 
-    </script>
+  
 
     <%--     //function WireEvents() {
             //    $('#SubmitButton').click(function () {

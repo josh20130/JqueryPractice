@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="../Scripts/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#HelpButton').click(function () {
+                $('#OutputDiv').load('NotFound.html',
+                    function (response, status, xhr) {
+                        if (status == "error") {
+                            alert('Error: ' + xhr.statusText);
+                        }
+                    });
+
+            });
+
+
+
+
+
+        });
+    </script>
+</head>
+<body>
+    <button id="HelpButton">Click to get html</button>
+    <div id="OutputDiv"></div>
+</body>
+</html>
